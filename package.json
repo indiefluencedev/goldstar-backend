@@ -28,6 +28,7 @@
     "express": "^4.19.2",
     "express-session": "^1.18.0",
     "find-free-port": "^2.0.0",
+    "helmet": "^7.1.0",
     "jsonwebtoken": "^9.0.2",
     "kill-port": "^2.0.1",
     "mongoose": "^8.4.0",

@@ -1,13 +1,12 @@
 import app from './app.js';
 import events from 'events';
-import cleanupSeries from './cleanupSeries.js'; // Import the cleanup function
+import cleanupSeries from './cleanupSeries.js';
+import updateSeriesWithNewModels from './updateSeriesWithNewModels.js';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 
-// Load environment variables from .env file
 dotenv.config();
 
-// Increase max listeners limit to avoid memory leaks
 events.EventEmitter.defaultMaxListeners = 20;
 
 const PORT = process.env.PORT || 8000;
@@ -21,8 +20,8 @@ const startServer = (port) => {
 
         server.on('error', (err) => {
             if (err.code === 'EADDRINUSE') {
-                console.error(`Port ${port} is already in use. Exiting...`);
-                process.exit(1); // Exit to stop infinite loop
+                console.error(`Port ${port} is already in use. Trying another port...`);
+                startServer(port + 1); // Try the next port
             } else {
                 throw err;
             }
@@ -30,7 +29,7 @@ const startServer = (port) => {
 
     } catch (error) {
         console.error('Failed to start server:', error);
-        process.exit(1); // Exit to prevent infinite loop
+        process.exit(1);
     }
 };
 
@@ -38,7 +37,10 @@ const gracefulShutdown = () => {
     if (server) {
         server.close(() => {
             console.log('Server shut down gracefully.');
-            process.exit(0);
+            mongoose.connection.close(false, () => {
+                console.log('MongoDB connection closed.');
+                process.exit(0);
+            });
         });
     }
 };
@@ -46,19 +48,31 @@ const gracefulShutdown = () => {
 process.on('SIGINT', gracefulShutdown);
 process.on('SIGTERM', gracefulShutdown);
 
-const mongoURI = process.env.MONGODB_URI; // Load MongoDB URI from .env
+const mongoURI = process.env.MONGODB_URI;
 
-mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => {
-        console.log('MongoDB connected');
-
-        // Run the cleanup function
-        cleanupSeries().catch(console.error).finally(() => {
-            // Start the server after cleanup
-            startServer(PORT);
+const startApplication = async () => {
+    try {
+        await mongoose.connect(mongoURI, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
         });
-    })
-    .catch(error => {
-        console.error('MongoDB connection error:', error);
-        process.exit(1); // Exit if MongoDB connection fails
-    });
+        console.log('MongoDB connected successfully');
+
+        const port = parseInt(process.env.PORT, 10) || 8000;
+
+        await updateSeriesWithNewModels();
+        console.log('Series update with new models completed.');
+
+        await cleanupSeries();
+        console.log('Series cleanup completed.');
+
+        startServer(port);
+    } catch (error) {
+        console.error('Failed to start application:', error.message);
+        process.exit(1);
+    }
+};
+
+startApplication();
+
+export default app;

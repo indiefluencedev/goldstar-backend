@@ -5,16 +5,11 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import session from 'express-session';
 import killPort from 'kill-port';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import helmet from 'helmet';
 import updateSeriesWithNewModels from './updateSeriesWithNewModels.js';
 
 import authRoutes from './routes/userRoutes.js';
 import { protect } from './middlewares/authMiddleware.js';
-
-dotenv.config();
-
-// Import routes
 import universalRoutes from './routes/universalRoutes.js';
 import lockstitchRoutes from './routes/lockstitchRoutes.js';
 import overlockRoutes from './routes/overlockRoutes.js';
@@ -22,45 +17,45 @@ import interlockRoutes from './routes/interlockRoutes.js';
 import heavyDutyRoutes from './routes/heavyDutyRoutes.js';
 import seriesRoutes from './routes/seriesRoutes.js';
 
+dotenv.config();
+
 const app = express();
 
-// Define __dirname
-// const __filename = fileURLToPath(import.meta.url);
-// const __dirname = path.dirname(__filename);
+// Use Helmet for setting various HTTP headers for security
+app.use(helmet());
 
+// CORS configuration
 app.use(cors({
-    origin: 'http://localhost:5173', // Your frontend's origin
-    credentials: true, // Allow credentials (cookies)
+    origin: process.env.FRONTEND_URL, // Use environment variable for frontend URL
+    credentials: true,
 }));
 
+// Middleware for parsing request bodies and cookies
 app.use(express.json({ limit: '1mb' }));
 app.use(express.urlencoded({ extended: true, limit: '1mb' }));
-app.use(express.static('public'));
-
-
-
-// importent to be correct for displaying the image 
-app.use('/uploads', express.static('uploads')); // Serve static files from the uploads directory
-
-
-
-
 app.use(cookieParser());
+
+// Session configuration
 app.use(session({
     secret: process.env.SESSION_SECRET || 'your-secret-key',
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: false } // Use secure: true if using HTTPS
+    cookie: { 
+        secure: process.env.NODE_ENV === 'production', // Use secure cookies in production
+        httpOnly: true, // HTTP only, prevents JavaScript access to cookies
+        maxAge: 24 * 60 * 60 * 1000 // 1 day
+    }
 }));
 
-app.use('/api/users', authRoutes); // Ensure this path matches your frontend requests
+// Serve static files from 'public' and 'uploads' directories
+app.use(express.static('public'));
+app.use('/uploads', express.static('uploads'));
 
-// Example of protecting a route
+// Routes
+app.use('/api/users', authRoutes);
 app.use('/api/protected-route', protect, (req, res) => {
     res.status(200).json({ message: 'This is a protected route' });
 });
-
-// Your routes
 app.use('/api', universalRoutes);
 app.use('/api/lockstitch', lockstitchRoutes);
 app.use('/api/overlock', overlockRoutes);
@@ -76,9 +71,8 @@ app.use((err, req, res, next) => {
 
 // Function to start the server
 const startServer = (port) => {
-    const bindAddress = process.env.NODE_ENV === 'development' ? '127.0.0.1' : '0.0.0.0';
-    const server = app.listen(port, bindAddress, () => {
-        console.log(`Server running on port ${port}, bound to ${bindAddress}`);
+    const server = app.listen(port, () => {
+        console.log(`Server running on port ${port}`);
     });
 
     const shutdown = () => {
