@@ -59,7 +59,7 @@ app.use(express.static('public'));
 app.use('/uploads', express.static('uploads'));
 
 // Routes
-app.use('/api/users', authRoutes);
+app.use('/users', authRoutes);
 app.use('/api/protected-route', protect, (req, res) => {
     res.status(200).json({ message: 'This is a protected route' });
 });
