@@ -4,7 +4,6 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import session from 'express-session';
-import killPort from 'kill-port';
 import helmet from 'helmet';
 import updateSeriesWithNewModels from './updateSeriesWithNewModels.js';
 
@@ -59,7 +58,7 @@ app.use(express.static('public'));
 app.use('/uploads', express.static('uploads'));
 
 // Routes
-app.use('/users', authRoutes);
+app.use('/api/users', authRoutes);
 app.use('/api/protected-route', protect, (req, res) => {
     res.status(200).json({ message: 'This is a protected route' });
 });
