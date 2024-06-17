@@ -26,7 +26,7 @@ app.use(helmet());
 
 // Custom CSP configuration to allow image loading from the backend
 app.use((req, res, next) => {
-    res.setHeader("Content-Security-Policy", "default-src 'self'; img-src 'self' https://testing-backend-s0dg.onrender.com; script-src 'self'; style-src 'self' 'unsafe-inline';");
+    res.setHeader("Content-Security-Policy", "default-src 'self'; img-src 'self' https://testing-backend-s0dg.onrender.com https://testing-frontend-omega.vercel.app; script-src 'self'; style-src 'self' 'unsafe-inline';");
     next();
 });
 
