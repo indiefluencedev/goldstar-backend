@@ -24,6 +24,12 @@ const app = express();
 // Use Helmet for setting various HTTP headers for security
 app.use(helmet());
 
+// Custom CSP configuration to allow image loading from the backend
+app.use((req, res, next) => {
+    res.setHeader("Content-Security-Policy", "default-src 'self'; img-src 'self' https://testing-backend-s0dg.onrender.com; script-src 'self'; style-src 'self' 'unsafe-inline';");
+    next();
+});
+
 // CORS configuration
 app.use(cors({
     origin: process.env.FRONTEND_URL, // Use environment variable for frontend URL
