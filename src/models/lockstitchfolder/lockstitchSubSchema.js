@@ -7,7 +7,7 @@ const LockstitchSubModelSchema = new mongoose.Schema({
     functions: { type: String, default: '*' },
     needleType: { type: String, default: '*' },
     needleFeed: { type: Boolean, default: false },
-    doubleNeedleStitchLength: { type: String, default: '*' },
+    needleStitchLength: { type: String, default: '*' }, // Corrected field name to camelCase
     liftHeightRange: { type: String, default: '*' },
     hasAutoThreadTrimmer: { type: Boolean, default: false },
     hasAutoLift: { type: Boolean, default: false },

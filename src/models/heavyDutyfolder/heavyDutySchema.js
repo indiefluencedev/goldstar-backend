@@ -8,10 +8,10 @@ const HeavyDutySchema = new mongoose.Schema({
     functions: { type: String, default: '*' },
     needleType: { type: String, default: '*' },
     needleFeed: { type: Boolean, default: false },
-    needleNo: { type: Number, default: 0.0 }, // Number type
+    needleNo: { type: Number, default: 0.0 }, 
     threadNo: { type: String, default: '*' },
     doubleNeedleStitchLength: { type: String, default: '*' },
-    stitchLengthRange: { type: Number, default: 0.0 }, // Number type
+    stitchLengthRange: { type: Number, default: 0.0 },
     liftHeightRange: { type: String, default: '*' },
     hasAutoThreadTrimmer: { type: Boolean, default: false },
     hasAutoLift: { type: Boolean, default: false },
@@ -23,7 +23,7 @@ const HeavyDutySchema = new mongoose.Schema({
     weight: { type: String, default: '*' },
     packingSize: { type: String, default: '*' },
     differentialRatio: { type: String, default: '*' },
-    speedInRPM: { type: Number, default: 0.0 }, // Number type
+    speedInRPM: { type: Number, default: 0.0 }, 
     image: { type: String, default: '*' },
     series: { type: mongoose.Schema.Types.ObjectId, ref: 'Series', required: true },
     subModels: { type: [HeavyDutySubModelSchema], default: [] }

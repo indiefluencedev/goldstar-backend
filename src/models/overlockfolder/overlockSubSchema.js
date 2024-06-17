@@ -8,14 +8,13 @@ const OverlockSubModelSchema = new mongoose.Schema({
     needleType: { type: String, default: '*' },
     needleNo: { type: Number, default: 0 },
     threadNo: { type: Number, default: 0 },
-    doubleNeedleStitchLength: { type: String, default: '*' },
-    stitchLengthRange: { type: Number, default: 0.0 },
-    stitchWidthRange: { type: Number, default: 0 },
-    liftHeightRange: { type: Number, default: 0.0 },
+    stitchLengthRange: { type: String, default: '*' }, // Changed to string as per the specification
+    stitchWidthRange: { type: String, default: '*' }, // Changed to string as per the specification
+    liftHeightRange: { type: String, default: '*' }, // Changed to string as per the specification
     isSuitableForLightMaterial: { type: Boolean, default: false },
     isSuitableForMediumMaterial: { type: Boolean, default: false },
     isSuitableForHeavyMaterial: { type: Boolean, default: false },
-    differentialRatio: { type: String, default: '*' },
+    // differentialRatio: { type: String, default: '*' },
     speedInRPM: { type: Number, default: 0 },
     image: { type: String, default: '*' }
 });
