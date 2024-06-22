@@ -14,6 +14,13 @@ import lockstitchRoutes from './routes/lockstitchRoutes.js';
 import overlockRoutes from './routes/overlockRoutes.js';
 import interlockRoutes from './routes/interlockRoutes.js';
 import heavyDutyRoutes from './routes/heavyDutyRoutes.js';
+import specialSeriesRoutes from './routes/specialSeriesRoutes.js';
+import zigzagSeriesRoutes from './routes/zigzagSeriesRoutes.js';
+import cuttingSeriesRoutes from './routes/cuttingRoutes.js'; // Corrected import
+import cuttingMachineSeriesRoutes from './routes/cuttingMachineSeriesRoutes.js';
+import fusingMachineSeriesRoutes from './routes/fusingMachineSeriesRoutes.js';
+import heatTransferSeriesRoutes from './routes/heatTransferRoutes.js';
+import needleDetectorSeriesRoutes from './routes/needleDetectorRoutes.js';
 import seriesRoutes from './routes/seriesRoutes.js';
 
 dotenv.config();
@@ -67,6 +74,13 @@ app.use('/api/lockstitch', lockstitchRoutes);
 app.use('/api/overlock', overlockRoutes);
 app.use('/api/interlock', interlockRoutes);
 app.use('/api/heavyDuty', heavyDutyRoutes);
+app.use('/api/specialseries', specialSeriesRoutes);
+app.use('/api/zigzag', zigzagSeriesRoutes);
+app.use('/api/cuttingseries', cuttingSeriesRoutes); // Corrected route
+app.use('/api/cuttingmachine', cuttingMachineSeriesRoutes);
+app.use('/api/fusingmachine', fusingMachineSeriesRoutes);
+app.use('/api/heattransfer', heatTransferSeriesRoutes);
+app.use('/api/needledetector', needleDetectorSeriesRoutes);
 app.use('/api/series', seriesRoutes);
 
 // Error handling middleware

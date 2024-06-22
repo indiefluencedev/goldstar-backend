@@ -3,9 +3,13 @@ import LockstitchModel from '../models/lockstitchfolder/lockstitchSchema.js';
 import OverlockModel from '../models/overlockfolder/overlockSchema.js';
 import InterlockModel from '../models/interlockfolder/interlockSchema.js';
 import HeavyDutyModel from '../models/heavyDutyfolder/heavyDutySchema.js';
-// import SpecialSeriesModel from '../models/specialSeriesSchema.js';
-// import ZigzagModel from '../models/zigzagSchema.js';
-// import CuttingModel from '../models/cuttingSchema.js';
+import SpecialSeriesModel from '../models/specialSeriesfolder/specialSeriesSchema.js';
+import ZigzagModel from '../models/zigzagSeriesfolder/zigzagSeriesSchema.js';
+// import CuttingModel from '../models/cuttingSeriesfolder/cuttingSeriesSchema.js';
+import CuttingMachineSeriesModel from '../models/cuttingMachineSeriesfolder/cuttingMachineSeriesSchema.js';
+import FusingMachineModel from '../models/fusingMachineSeriesfolder/fusingMachineSeriesSchema.js';
+import HeatTransferModel from '../models/heatTransferfolder/heatTransferSchema.js';
+import NeedleDetectorModel from '../models/needleDetectorfolder/needleDetectorSchema.js';
 
 // A map to easily access model types
 const modelMap = {
@@ -13,9 +17,13 @@ const modelMap = {
     'Overlock': OverlockModel,
     'Interlock': InterlockModel,
     'HeavyDuty': HeavyDutyModel,
-    // 'SpecialSeries': SpecialSeriesModel,
-    // 'Zigzag': ZigzagModel,
-    // 'Cutting': CuttingModel
+    'SpecialSeries': SpecialSeriesModel,
+    'Zigzag': ZigzagModel,
+    // 'Cutting': CuttingModel,
+    'CuttingMachineSeries': CuttingMachineSeriesModel,
+    'FusingMachine': FusingMachineModel,
+    'HeatTransfer': HeatTransferModel,
+    'NeedleDetector': NeedleDetectorModel
 };
 
 // Create Series

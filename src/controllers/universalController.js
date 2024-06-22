@@ -2,18 +2,27 @@ import OverlockModel from '../models/overlockfolder/overlockSchema.js';
 import LockstitchModel from '../models/lockstitchfolder/lockstitchSchema.js';
 import InterlockModel from '../models/interlockfolder/interlockSchema.js';
 import HeavyDutyModel from '../models/heavyDutyfolder/heavyDutySchema.js';
-// import SpecialSeriesModel from '../models/specialSeriesfolder/specialSeriesSchema.js';
-// import ZigzagModel from '../models/zigzagfolder/zigzagSchema.js';
-// import CuttingModel from '../models/cuttingfolder/cuttingSchema.js';
+import SpecialSeriesModel from '../models/specialSeriesfolder/specialSeriesSchema.js';
+import ZigzagModel from '../models/zigzagSeriesfolder/zigzagSeriesSchema.js';
+import CuttingModel from '../models/CuttingSchemafolder/CuttingSchema.js';
+import CuttingMachineSeriesModel from '../models/cuttingMachineSeriesfolder/cuttingMachineSeriesSchema.js';
+import FusingMachineSeriesModel from '../models/fusingMachineSeriesfolder/fusingMachineSeriesSchema.js';
+import HeatTransferModel from '../models/heatTransferfolder/heatTransferSchema.js';
+import NeedleDetectorModel from '../models/needleDetectorfolder/needleDetectorSchema.js';
 
 const modelMap = {
     Lockstitch: LockstitchModel,
     Overlock: OverlockModel,
     Interlock: InterlockModel,
     HeavyDuty: HeavyDutyModel,
-    // SpecialSeries: SpecialSeriesModel,
-    // Zigzag: ZigzagModel,
-    // Cutting: CuttingModel,
+    SpecialSeries: SpecialSeriesModel,
+    Zigzag: ZigzagModel,
+    Cutting: CuttingModel,
+    Cuttingmachine: CuttingMachineSeriesModel,
+    Fusingmachine: FusingMachineSeriesModel,
+    Heattransfer: HeatTransferModel,
+    Needledetector: NeedleDetectorModel
+
 };
 
 const getModelByType = (type) => {
