@@ -13,7 +13,7 @@ const seriesSchema = new mongoose.Schema({
     modelType: {
         type: String,
         required: true,
-        enum: ['Lockstitch', 'Overlock', 'Interlock', 'HeavyDuty']
+        enum: ['Lockstitch', 'Overlock', 'Interlock', 'HeavyDuty', 'SpecialSeries', 'Zigzag', 'CuttingSeries','Cuttingmachine','Fusingmachine','Heattransfer','Needledetector']
 
         // , 'SpecialSeries', 'Zigzag', 'Cutting'  add when confermed
     }

@@ -4,18 +4,26 @@ import LockstitchModel from './models/lockstitchfolder/lockstitchSchema.js';
 import OverlockModel from './models/overlockfolder/overlockSchema.js';
 import InterlockModel from './models/interlockfolder/interlockSchema.js';
 import HeavyDutyModel from './models/heavyDutyfolder/heavyDutySchema.js';
-// import SpecialSeriesModel from './models/specialSeriesSchema.js';
-// import ZigzagModel from './models/zigzagSchema.js';
-// import CuttingModel from './models/cuttingSchema.js';
+import SpecialSeriesModel from './models/specialSeriesfolder/specialSeriesSchema.js';
+import ZigzagModel from './models/zigzagSeriesfolder/zigzagSeriesSchema.js';
+import CuttingSeriesModel from './models/CuttingSchemafolder/CuttingSchema.js';
+import CuttingMachineSeriesModel from './models/cuttingMachineSeriesfolder/cuttingMachineSeriesSchema.js';
+import FusingMachineModel from './models/fusingMachineSeriesfolder/fusingMachineSeriesSchema.js';
+import HeatTransferModel from './models/heatTransferfolder/heatTransferSchema.js';
+import NeedleDetectorModel from './models/needleDetectorfolder/needleDetectorSchema.js';
 
 const modelMapping = {
     Lockstitch: LockstitchModel,
     Overlock: OverlockModel,
     Interlock: InterlockModel,
     HeavyDuty: HeavyDutyModel,
-    // SpecialSeries: SpecialSeriesModel,
-    // Zigzag: ZigzagModel,
-    // Cutting: CuttingModel
+    SpecialSeries: SpecialSeriesModel,
+    Zigzag: ZigzagModel,
+    CuttingSeries:CuttingSeriesModel,
+    Cuttingmachine: CuttingMachineSeriesModel,
+    Fusingmachine: FusingMachineModel,
+    Heattransfer: HeatTransferModel,
+    Needledetector: NeedleDetectorModel
 };
 
 const cleanupSeries = async () => {
