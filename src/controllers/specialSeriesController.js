@@ -1,4 +1,4 @@
-import SpecialSeriesModel from '../models/specialseriesfolder/specialSeriesSchema.js';
+import SpecialSeriesModel from '../models/specialSeriesfolder/specialSeriesSchema.js';
 import multer from 'multer';
 import updateSeriesWithNewModels from '../updateSeriesWithNewModels.js';
 import cleanupSeries from '../cleanupSeries.js';
