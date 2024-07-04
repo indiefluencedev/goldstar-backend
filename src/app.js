@@ -17,7 +17,7 @@ import heavyDutyRoutes from './routes/heavyDutyRoutes.js';
 import specialSeriesRoutes from './routes/specialSeriesRoutes.js';
 import zigzagSeriesRoutes from './routes/zigzagSeriesRoutes.js';
 import cuttingSeriesRoutes from './routes/cuttingRoutes.js'; // Corrected import
-import cuttingMachineSeriesRoutes from './routes/cuttingMachineSeriesRoutes.js';
+// import cuttingMachineSeriesRoutes from './routes/cuttingMachineSeriesRoutes.js';
 import fusingMachineSeriesRoutes from './routes/fusingMachineSeriesRoutes.js';
 import heatTransferSeriesRoutes from './routes/heatTransferRoutes.js';
 import needleDetectorSeriesRoutes from './routes/needleDetectorRoutes.js';
@@ -77,7 +77,7 @@ app.use('/api/heavyDuty', heavyDutyRoutes);
 app.use('/api/specialseries', specialSeriesRoutes);
 app.use('/api/zigzag', zigzagSeriesRoutes);
 app.use('/api/cuttingseries', cuttingSeriesRoutes); // Corrected route
-app.use('/api/cuttingmachine', cuttingMachineSeriesRoutes);
+// app.use('/api/cuttingmachine', cuttingMachineSeriesRoutes);
 app.use('/api/fusingmachine', fusingMachineSeriesRoutes);
 app.use('/api/heattransfer', heatTransferSeriesRoutes);
 app.use('/api/needledetector', needleDetectorSeriesRoutes);

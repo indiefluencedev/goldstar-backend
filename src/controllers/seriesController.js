@@ -5,8 +5,8 @@ import InterlockModel from '../models/interlockfolder/interlockSchema.js';
 import HeavyDutyModel from '../models/heavyDutyfolder/heavyDutySchema.js';
 import SpecialSeriesModel from '../models/specialSeriesfolder/specialSeriesSchema.js';
 import ZigzagModel from '../models/zigzagSeriesfolder/zigzagSeriesSchema.js';
-// import CuttingModel from '../models/cuttingSeriesfolder/cuttingSeriesSchema.js';
-import CuttingMachineSeriesModel from '../models/cuttingMachineSeriesfolder/cuttingMachineSeriesSchema.js';
+import CuttingModel from '../models/CuttingSchemafolder/CuttingSchema.js';
+// import CuttingMachineSeriesModel from '../models/cuttingMachineSeriesfolder/cuttingMachineSeriesSchema.js';
 import FusingMachineModel from '../models/fusingMachineSeriesfolder/fusingMachineSeriesSchema.js';
 import HeatTransferModel from '../models/heatTransferfolder/heatTransferSchema.js';
 import NeedleDetectorModel from '../models/needleDetectorfolder/needleDetectorSchema.js';
@@ -19,8 +19,8 @@ const modelMap = {
     'HeavyDuty': HeavyDutyModel,
     'SpecialSeries': SpecialSeriesModel,
     'Zigzag': ZigzagModel,
-    // 'Cutting': CuttingModel,
-    'CuttingMachineSeries': CuttingMachineSeriesModel,
+    'Cutting': CuttingModel,
+    // 'CuttingMachineSeries': CuttingMachineSeriesModel,
     'FusingMachine': FusingMachineModel,
     'HeatTransfer': HeatTransferModel,
     'NeedleDetector': NeedleDetectorModel

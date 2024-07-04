@@ -7,7 +7,7 @@ import HeavyDutyModel from './models/heavyDutyfolder/heavyDutySchema.js';
 import SpecialSeriesModel from './models/specialSeriesfolder/specialSeriesSchema.js';
 import ZigzagModel from './models/zigzagSeriesfolder/zigzagSeriesSchema.js';
 import CuttingSeriesModel from './models/CuttingSchemafolder/CuttingSchema.js';
-import CuttingMachineSeriesModel from './models/cuttingMachineSeriesfolder/cuttingMachineSeriesSchema.js';
+// import CuttingMachineSeriesModel from './models/cuttingMachineSeriesfolder/cuttingMachineSeriesSchema.js';
 import FusingMachineModel from './models/fusingMachineSeriesfolder/fusingMachineSeriesSchema.js';
 import HeatTransferModel from './models/heatTransferfolder/heatTransferSchema.js';
 import NeedleDetectorModel from './models/needleDetectorfolder/needleDetectorSchema.js';
@@ -20,7 +20,7 @@ const modelMapping = {
     SpecialSeries: SpecialSeriesModel,
     Zigzag: ZigzagModel,
     CuttingSeries:CuttingSeriesModel,
-    Cuttingmachine: CuttingMachineSeriesModel,
+    // Cuttingmachine: CuttingMachineSeriesModel,
     Fusingmachine: FusingMachineModel,
     Heattransfer: HeatTransferModel,
     Needledetector: NeedleDetectorModel
