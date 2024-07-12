@@ -5,6 +5,7 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import session from 'express-session';
 import helmet from 'helmet';
+import killPort from 'kill-port';
 import updateSeriesWithNewModels from './updateSeriesWithNewModels.js';
 
 import authRoutes from './routes/userRoutes.js';
@@ -17,7 +18,6 @@ import heavyDutyRoutes from './routes/heavyDutyRoutes.js';
 import specialSeriesRoutes from './routes/specialSeriesRoutes.js';
 import zigzagSeriesRoutes from './routes/zigzagSeriesRoutes.js';
 import cuttingSeriesRoutes from './routes/cuttingRoutes.js'; // Corrected import
-// import cuttingMachineSeriesRoutes from './routes/cuttingMachineSeriesRoutes.js';
 import fusingMachineSeriesRoutes from './routes/fusingMachineSeriesRoutes.js';
 import heatTransferSeriesRoutes from './routes/heatTransferRoutes.js';
 import needleDetectorSeriesRoutes from './routes/needleDetectorRoutes.js';
@@ -39,7 +39,7 @@ app.use((req, res, next) => {
 
 // CORS configuration
 app.use(cors({
-    origin: process.env.FRONTEND_URL, // Use environment variable for frontend URL
+    origin: process.env.ALLOWED_ORIGIN || 'https://goldstarsewing.vercel.app', // Use environment variable for frontend URL
     credentials: true,
 }));
 
@@ -77,7 +77,6 @@ app.use('/api/heavyDuty', heavyDutyRoutes);
 app.use('/api/specialseries', specialSeriesRoutes);
 app.use('/api/zigzag', zigzagSeriesRoutes);
 app.use('/api/cuttingseries', cuttingSeriesRoutes); // Corrected route
-// app.use('/api/cuttingmachine', cuttingMachineSeriesRoutes);
 app.use('/api/fusingmachine', fusingMachineSeriesRoutes);
 app.use('/api/heattransfer', heatTransferSeriesRoutes);
 app.use('/api/needledetector', needleDetectorSeriesRoutes);
