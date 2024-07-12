@@ -32,7 +32,7 @@ app.use(helmet());
 
 // Custom CSP and CORP configuration to allow image loading from the backend
 app.use((req, res, next) => {
-    res.setHeader("Content-Security-Policy", "default-src 'self'; img-src 'self' https://testing-backend-s0dg.onrender.com; script-src 'self'; style-src 'self' 'unsafe-inline';");
+    res.setHeader("Content-Security-Policy", "default-src 'self'; img-src 'self' https://goldstar-backend.onrender.com; script-src 'self'; style-src 'self' 'unsafe-inline';");
     res.setHeader("Cross-Origin-Resource-Policy", "cross-origin");
     next();
 });
