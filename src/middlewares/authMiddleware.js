@@ -1,22 +1,19 @@
-import jwt from 'jsonwebtoken';
-import user from '../models/user.js';
+import { expressjwt as jwt } from 'express-jwt';
+import jwksRsa from 'jwks-rsa';
+import dotenv from 'dotenv';
 
-export const protect = async (req, res, next) => {
-  let token;
+dotenv.config();
 
-  if (req.cookies.token) {
-    token = req.cookies.token;
-  }
+const checkJwt = jwt({
+  secret: jwksRsa.expressJwtSecret({
+    cache: true,
+    rateLimit: true,
+    jwksRequestsPerMinute: 5,
+    jwksUri: `https://${process.env.AUTH0_DOMAIN}/.well-known/jwks.json`,
+  }),
+  audience: process.env.AUTH0_AUDIENCE,
+  issuer: `https://${process.env.AUTH0_DOMAIN}/`,
+  algorithms: ['RS256'],
+});
 
-  if (!token) {
-    return res.status(401).json({ msg: 'No token, authorization denied' });
-  }
-
-  try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = decoded.user;
-    next();
-  } catch (err) {
-    res.status(401).json({ msg: 'Token is not valid' });
-  }
-};
+export default checkJwt;
