@@ -32,7 +32,7 @@ const app = express();
 app.use(helmet());
 
 app.use((req, res, next) => {
-  res.setHeader("Content-Security-Policy", "default-src 'self'; img-src 'self' http://indiefluencedev.tech; script-src 'self'; style-src 'self' 'unsafe-inline';");
+  res.setHeader("Content-Security-Policy", "default-src 'self'; img-src 'self' https://goldstar.indiefluencedev.tech; script-src 'self'; style-src 'self' 'unsafe-inline';");
   res.setHeader("Cross-Origin-Resource-Policy", "cross-origin");
   next();
 });
